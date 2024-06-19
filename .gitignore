@@ -59,4 +59,10 @@ Thumbs.db
 
 # visual studio
 *.sln
+.vs/
+obj/
+bin/
+*.vcxpro*
+icon.rc
+config.make
 
