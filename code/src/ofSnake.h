@@ -10,7 +10,7 @@ public:
     ofSnake();
     ~ofSnake();
 
-    int foo = 6;
+    int foo = 7;
 
     
 
