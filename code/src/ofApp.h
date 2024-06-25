@@ -26,6 +26,7 @@ class ofApp : public ofBaseApp{
 		
     ofSnake mySnake{};
     ofFood myFood{};
+
     private:
-	vector<string> foodImages;  
+	vector<string> foodImages;  //filename of the food PNG
 };

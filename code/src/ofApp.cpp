@@ -1,6 +1,6 @@
 #include "ofApp.h"
 #include "ofFood.h"
-#include "ofImage.h"
+
 //--------------------------------------------------------------
 void ofApp::setup(){
 
@@ -12,9 +12,11 @@ void ofApp::setup(){
     
 	ofBackground(0);
 
-  // Load 14 PNG files into an array
-    vector<string> foodImages = {
-        "food1.png", "food2.png", "food3.png", "food4.png", "food5.png", "food6.png", "food7.png", "food8.png", "food9.png", "food10.png", "food11.png", "food12.png", "food13.png", "food14.png"
+  // Load 14 PNG files
+   
+	foodImages = {
+        "food1.png", "food2.png", "food3.png", "food4.png", "food5.png", "food6.png", "food7.png", 
+		"food8.png", "food9.png", "food10.png", "food11.png", "food12.png", "food13.png", "food14.png"
     };
 
     //Load a random food image
