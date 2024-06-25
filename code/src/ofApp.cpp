@@ -17,6 +17,7 @@ void ofApp::setup(){
 	foodImages = {
         "food1.png", "food2.png", "food3.png", "food4.png", "food5.png", "food6.png", "food7.png", 
 		"food8.png", "food9.png", "food10.png", "food11.png", "food12.png", "food13.png", "food14.png"
+		"food15.png", "food16.png", "food17.png", "food18.png"
     };
 
     //Load a random food image
