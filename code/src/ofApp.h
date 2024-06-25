@@ -26,5 +26,6 @@ class ofApp : public ofBaseApp{
 		
     ofSnake mySnake{};
     ofFood myFood{};
-    
+    private:
+	vector<string> foodImages;  
 };
