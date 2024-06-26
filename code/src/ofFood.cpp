@@ -1,36 +1,30 @@
 #include "ofFood.h"
 
-
 ofFood::ofFood() {
-    
-    color.set(250, 0, 50);
-    
-    // set the first position of food randomly
-    // otherwise food and snake have the same pos at (0,0) which leads to an error
-    // in "snake's eat function > startcheck is increased w/o reason"
+    color.set(0, 255, 0);
+    pickLocation();
+}
+
+void ofFood::pickLocation() {
+    int cols = floor(ofGetWidth() / scl);
+    int rows = floor(ofGetHeight() / scl);
+    myPos.x = floor(ofRandom(cols)) * scl;
+    myPos.y = floor(ofRandom(rows)) * scl;
+}
+
+void ofFood::drawFood() {
+    ofSetColor(color);
+    ofDrawRectangle(myPos.x, myPos.y, scl, scl);
+}
+
+ofVec2f ofFood::getPos() const { // Implementation of getter for myPos
+    return myPos;
+}
+
+void ofFood::relocate() { // Implementation of public method to change location
     pickLocation();
 }
 
 ofFood::~ofFood() {
-
+    // Destructor doesn't need to do anything
 }
-
-
-void ofFood::pickLocation() {
-
-    int cols = floor(ofGetWidth() / scl);
-    int rows = floor(ofGetHeight() / scl);
-
-    myPos.x = floor(ofRandom(cols))*scl;
-    myPos.y = floor(ofRandom(rows))*scl;
-
-    cout << "PICKED " << myPos.x << endl;
-}
-
-
-void ofFood::drawFood() {
-    
-    ofSetColor(color);
-    ofDrawRectangle(myPos.x,myPos.y, scl, scl);
-}
-

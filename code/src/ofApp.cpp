@@ -3,11 +3,10 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 
-    // TODO: Play with the frame rate to find a good handling.
     // Yet, think about this approach? What are the pros and cons
     // of using the frame rate and what other approach could be
     // used instead?
-	ofSetFrameRate(10);
+	ofSetFrameRate(30);
     
 	ofBackground(0);
 }
@@ -18,8 +17,8 @@ void ofApp::update(){
 	
 	mySnake.updateSnake();
 
-	if (mySnake.eat(myFood.myPos)) {
-		myFood.pickLocation();
+	if (mySnake.eat(myFood.getPos())) {
+		myFood.relocate();
         
 	}
 
@@ -53,9 +52,6 @@ void ofApp::keyPressed(int key){
 		break;
 	}
 }
-
-
-
 
 
 
