@@ -22,5 +22,7 @@ public:
     void setCellSize(int cellSize); // New method to set the cell size
     bool eat(ofVec2f foodPos);
     void grow(); // New method to add a tail piece
-
+    void startMoving(); // New method to start game
+    bool checkCollision();
+    int growDelay = 0;
 };

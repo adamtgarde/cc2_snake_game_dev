@@ -5,14 +5,6 @@
 #include "ofFood.h"
 
 
-// TODO: Refactoring
-// This class works but does not follow the best
-// code design approach if you think of separating
-// interface from implementation and access levels.
-// Review all classes and improve the respective
-// implementations accordingly.
-
-
 class ofApp : public ofBaseApp{
 
 	public:
@@ -25,6 +17,10 @@ class ofApp : public ofBaseApp{
 		void keyPressed(int key);
 		
     ofSnake mySnake{};
-    ofFood myFood{};
+	ofFood myFood{};
+
+	bool gameStarted = false;
+	bool gameOver = false;
+	float gameOverTime;
     
 };

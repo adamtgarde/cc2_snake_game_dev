@@ -21,13 +21,19 @@ ofSnake::~ofSnake() {
 
 void ofSnake::updateSnake() {
 
-    // Shift positions in the tail to make room for the new position
-    for (int i = tail.size() - 1; i > 0; i--) {
-        tail[i] = tail[i - 1];
-    }
-    // Add the current position to the start of the tail
-    if (!tail.empty()) {
+    // Only shift positions in the tail if it has more than one element
+        if (tail.size() > 1) {
+        for (int i = tail.size() - 1; i > 0; i--) {
+            tail[i] = tail[i - 1];
+        }
+        // Add the current position to the start of the tail
         tail[0] = myPos;
+    }
+
+    // Only grow the tail if the grow delay is zero
+    if (growDelay > 0) {
+        grow();
+        growDelay--;
     }
 
     myPos.x = myPos.x + xSpeed * cellSize;
@@ -46,7 +52,6 @@ void ofSnake::updateSnake() {
     else if (myPos.y >= ofGetHeight()) {
         myPos.y = 0;
     }
-
 }
 
 
@@ -90,7 +95,7 @@ void ofSnake::setCellSize(int cellSize) { // Implementation of setCellSize
 bool ofSnake::eat(ofVec2f foodPos) {
 
     if (myPos.distance(foodPos) < cellSize) {
-        grow(); // Add a tail piece when the snake eats food
+        growDelay += 3; // Increase the grow delay when the snake eats food
         return true;
     }
     return false;
@@ -98,10 +103,46 @@ bool ofSnake::eat(ofVec2f foodPos) {
 }
 
 
-void ofSnake::grow() { // Implementation of grow
+void ofSnake::grow() {
     // Add three tail pieces when the snake eats food
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 3; i++) {
+        // Add the new tail piece at the end of the tail
         tail.push_back(myPos);
     }
 }
 
+bool ofSnake::checkCollision() {
+    if (tail.empty()) { // If tail is empty, return false
+        return false;
+    }
+    for (int i = 0; i < tail.size() - 4; i++) { // Ignore the last element of tail
+        if (myPos.distance(tail[i]) < cellSize) {
+            return true;
+        }
+    }
+    return false;
+}
+
+
+void ofSnake::startMoving() {
+    // Set xSpeed and ySpeed to values corresponding to up, down, left, or right
+    int direction = floor(ofRandom(4));
+    switch (direction) {
+    case 0: // up
+        xSpeed = 0;
+        ySpeed = -0.5;
+        break;
+    case 1: // down
+        xSpeed = 0;
+        ySpeed = 0.5;
+        break;
+    case 2: // left
+        xSpeed = -0.5;
+        ySpeed = 0;
+        break;
+    case 3: // right
+        xSpeed = 0.5;
+        ySpeed = 0;
+        break;
+    }
+}
