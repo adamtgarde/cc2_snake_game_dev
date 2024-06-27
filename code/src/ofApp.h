@@ -5,14 +5,6 @@
 #include "ofFood.h"
 
 
-// TODO: Refactoring
-// This class works but does not follow the best
-// code design approach if you think of separating
-// interface from implementation and access levels.
-// Review all classes and improve the respective
-// implementations accordingly.
-
-
 class ofApp : public ofBaseApp{
 
 	public:
@@ -29,4 +21,10 @@ class ofApp : public ofBaseApp{
 
     private:
 	vector<string> foodImages;  //filename of the food PNG
+	ofFood myFood{};
+
+	bool gameStarted = false;
+	bool gameOver = false;
+	float gameOverTime;
+    
 };
