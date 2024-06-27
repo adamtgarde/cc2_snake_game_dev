@@ -21,21 +21,6 @@ ofSnake::~ofSnake() {
 
 void ofSnake::updateSnake() {
 
-    // Only shift positions in the tail if it has more than one element
-        if (tail.size() > 1) {
-        for (int i = tail.size() - 1; i > 0; i--) {
-            tail[i] = tail[i - 1];
-        }
-        // Add the current position to the start of the tail
-        tail[0] = myPos;
-    }
-
-    // Only grow the tail if the grow delay is zero
-    if (growDelay > 0) {
-        grow();
-        growDelay--;
-    }
-
     myPos.x = myPos.x + xSpeed * cellSize;
     myPos.y = myPos.y + ySpeed * cellSize;
 
@@ -56,12 +41,6 @@ void ofSnake::updateSnake() {
 
 
 void ofSnake::drawSnake() {
-
-    // Draw the tail
-    for (const auto& pos : tail) {
-        ofSetColor(colorIO);
-        ofDrawRectangle(pos.x, pos.y, cellSize, cellSize);
-    }
 
     // Draw the head
     ofSetColor(colorIO);
@@ -93,36 +72,11 @@ void ofSnake::setCellSize(int cellSize) { // Implementation of setCellSize
 
 
 bool ofSnake::eat(ofVec2f foodPos) {
-
     if (myPos.distance(foodPos) < cellSize) {
-        growDelay += 3; // Increase the grow delay when the snake eats food
         return true;
     }
     return false;
-
 }
-
-
-void ofSnake::grow() {
-    // Add three tail pieces when the snake eats food
-    for (int i = 0; i < 3; i++) {
-        // Add the new tail piece at the end of the tail
-        tail.push_back(myPos);
-    }
-}
-
-bool ofSnake::checkCollision() {
-    if (tail.empty()) { // If tail is empty, return false
-        return false;
-    }
-    for (int i = 0; i < tail.size() - 4; i++) { // Ignore the last element of tail
-        if (myPos.distance(tail[i]) < cellSize) {
-            return true;
-        }
-    }
-    return false;
-}
-
 
 void ofSnake::startMoving() {
     // Set xSpeed and ySpeed to values corresponding to up, down, left, or right

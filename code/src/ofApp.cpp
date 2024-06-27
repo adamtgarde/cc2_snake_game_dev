@@ -19,13 +19,9 @@ void ofApp::update() {
 		if (mySnake.eat(myFood.getPos())) {
 			myFood.relocate();
 		}
-		// Check for collision after eating
-		if (mySnake.checkCollision()) {
-			gameOver = true;
-			gameOverTime = ofGetElapsedTimef();
-		}
 	}
 }
+
 
 //--------------------------------------------------------------
 void ofApp::draw(){
