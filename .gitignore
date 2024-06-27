@@ -61,8 +61,8 @@ Thumbs.db
 *.sln
 .vs/
 obj/
-bin/
 !bin/data/
+bin/
 *.vcxpro*
 icon.rc
 config.make
