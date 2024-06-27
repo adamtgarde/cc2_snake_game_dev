@@ -3,10 +3,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 
-    // Yet, think about this approach? What are the pros and cons
-    // of using the frame rate and what other approach could be
-    // used instead?
-	ofSetFrameRate(15);
+	ofSetFrameRate(7);
     
 	ofBackground(0);
 }

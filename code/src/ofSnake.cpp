@@ -50,7 +50,7 @@ void ofSnake::drawSnake() {
 
 void ofSnake::setDir(int x, int y) {
     
-    float speedFactor = 0.5;
+    float speedFactor = 1;
 
     xSpeed = x * speedFactor;
     ySpeed = y * speedFactor;
