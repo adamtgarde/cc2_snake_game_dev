@@ -16,15 +16,14 @@ class ofApp : public ofBaseApp{
 
 		void keyPressed(int key);
 		
-    ofSnake mySnake{};
-    ofFood myFood{};
+		ofSnake mySnake{};
+		ofFood myFood{};
 
     private:
-	vector<string> foodImages;  //filename of the food PNG
-	ofFood myFood{};
+		vector<string> foodImages;  //filename of the food PNG
 
-	bool gameStarted = false;
-	bool gameOver = false;
-	float gameOverTime;
+		bool gameStarted = false;
+		bool gameOver = false;
+		float gameOverTime;
     
 };

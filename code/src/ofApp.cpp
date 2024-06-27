@@ -17,25 +17,24 @@ void ofApp::setup(){
     };
 
     //Load a random food image
-    int randomIndex = ofRandom(foodImages.size());
-    myFood.foodImage.load(foodImages[randomIndex]);
+ 	int randomIndex = ofRandom(foodImages.size());
+	myFood.setImage(foodImages[randomIndex]);
+	ofImage foodImage = myFood.getImage();
 }
 
 //--------------------------------------------------------------
 void ofApp::update() {
 
-	if (mySnake.eat(myFood.myPos)) {
-		int randomIndex = ofRandom(foodImages.size());
-        myFood.foodImage.load(foodImages[randomIndex]);
-		myFood.pickLocation();
-        
 	if (gameStarted && !gameOver) {
 		mySnake.updateSnake();
 		if (mySnake.eat(myFood.getPos())) {
+			int randomIndex = ofRandom(foodImages.size());
+			myFood.setImage(foodImages[randomIndex]);
 			myFood.relocate();
 		}
 	}
 }
+
 
 
 //--------------------------------------------------------------

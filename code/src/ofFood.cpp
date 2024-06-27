@@ -13,8 +13,8 @@ void ofFood::pickLocation() {
 }
 
 void ofFood::drawFood() {
-    ofSetColor(color);
-    ofDrawRectangle(myPos.x, myPos.y, scl, scl);
+    //ofSetColor(color);
+    foodImage.draw(myPos.x, myPos.y, scl, scl);
 }
 
 ofVec2f ofFood::getPos() const { // Implementation of getter for myPos
@@ -23,6 +23,14 @@ ofVec2f ofFood::getPos() const { // Implementation of getter for myPos
 
 void ofFood::relocate() { // Implementation of public method to change location
     pickLocation();
+}
+
+void ofFood::setImage(const std::string& filename) {
+    foodImage.load(filename);
+}
+
+ofImage ofFood::getImage() const {
+    return foodImage;
 }
 
 ofFood::~ofFood() {

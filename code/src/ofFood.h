@@ -15,6 +15,8 @@ public:
     ofFood();
     ~ofFood();
     void drawFood();
-    ofVec2f getPos() const; // Getter for myPos
-    void relocate(); // Public method to change location
+    ofVec2f getPos() const;
+    void relocate();
+    void setImage(const std::string& filename);
+    ofImage getImage() const;
 };
