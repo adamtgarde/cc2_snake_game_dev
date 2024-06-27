@@ -62,7 +62,7 @@ Thumbs.db
 .vs/
 obj/
 bin/
-!bin/data/*.png
+!bin/data/
 *.vcxpro*
 icon.rc
 config.make
